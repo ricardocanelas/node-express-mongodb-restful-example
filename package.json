@@ -1,0 +1,65 @@
+{
+  "name": "node-express-mongoose-rest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ricardo Canelas",
+  "license": "MIT",
+  "browserslist": "> 0.5%, not dead",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.9",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.1.3",
+    "lint-staged": "^8.0.4",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.5",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/server.js",
+    "test": "cross-env NODE_ENV=test mocha --require @babel/register src/tests/*.js --exit",
+    "test:coverage": "cross-env NODE_ENV=test nyc  --reporter=html --reporter=text mocha --require @babel/register src/tests/*.js --exit",
+    "lint": "node_modules/.bin/eslint *.js src --color --ignore-path .gitignore .",
+    "lint:fix": "node_modules/.bin/eslint --fix *.js src --color --ignore-path .gitignore .",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
+  }
+}
