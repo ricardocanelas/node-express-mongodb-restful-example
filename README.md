@@ -100,6 +100,15 @@ yarn build
 yarn serve
 ```
 
+**Seed**
+
+```
+yarn seed
+```
+
+* email: admin@mail.com
+* password: secret
+
 ---
 
 ## 👉🏻 API Endpoint
